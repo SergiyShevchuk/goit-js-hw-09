@@ -4,21 +4,13 @@ const btnStart = colors('button[data-start]');
 const btnStop = colors('button[data-stop]');
 const body = colors('body');
 
-let colorBody = '';
-let intervalId = null;
-
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
-
 const switchColor = () => {
   intervalId = setInterval(() => {
-    const randomColor = getRandomHexColor();
-    body.style.backgroundColor = randomColor;
+    document.body.style.backgroundColor = getRandomHexColor();
+}, 1000);
     btnStart.disabled = true;
     btnStop.disabled = false;
-  }, 1000);
+  ;
 };
 
 const stopSwitch = () => {
@@ -31,4 +23,7 @@ const stopSwitch = () => {
 btnStart.addEventListener('click', switchColor);
 btnStop.addEventListener('click', stopSwitch);
 
-console.log(backgroundColor);
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
